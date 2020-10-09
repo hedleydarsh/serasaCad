@@ -12,9 +12,9 @@ return [
     | For more detailed instructions you can look here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/#61-title
     |
-     */
+    */
 
-    'title' => 'Serasa Cad',
+    'title' => 'AdminLTE 3',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -28,9 +28,9 @@ return [
     | For more detailed instructions you can look here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/#62-favicon
     |
-     */
+    */
 
-    'use_ico_only' => true,
+    'use_ico_only' => false,
     'use_full_favicon' => false,
 
     /*
@@ -43,9 +43,14 @@ return [
     | For more detailed instructions you can look here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/#63-logo
     |
-     */
+    */
 
-    'logo' => '<b>Serasa</b> Cad',
+    'logo' => '<b>Admin</b>LTE',
+    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo_img_class' => 'brand-image img-circle elevation-3',
+    'logo_img_xl' => null,
+    'logo_img_xl_class' => 'brand-image-xs',
+    'logo_img_alt' => 'AdminLTE',
 
     /*
     |--------------------------------------------------------------------------
@@ -57,7 +62,7 @@ return [
     | For more detailed instructions you can look here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/#64-user-menu
     |
-     */
+    */
 
     'usermenu_enabled' => true,
     'usermenu_header' => false,
@@ -76,13 +81,13 @@ return [
     | For more detailed instructions you can look here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/#71-layout
     |
-     */
+    */
 
     'layout_topnav' => null,
     'layout_boxed' => null,
     'layout_fixed_sidebar' => null,
     'layout_fixed_navbar' => null,
-    'layout_fixed_footer' => true,
+    'layout_fixed_footer' => null,
 
     /*
     |--------------------------------------------------------------------------
@@ -94,14 +99,15 @@ return [
     | For more detailed instructions you can look here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/#721-authentication-views-classes
     |
-     */
+    */
 
-    'classes_auth_card' => '',
-    'classes_auth_header' => 'bg-gradient-info',
+    'classes_auth_card' => 'card-outline card-primary',
+    'classes_auth_header' => '',
     'classes_auth_body' => '',
-    'classes_auth_footer' => 'text-center',
-    'classes_auth_icon' => 'fa-lg text-info',
+    'classes_auth_footer' => '',
+    'classes_auth_icon' => '',
     'classes_auth_btn' => 'btn-flat btn-primary',
+
     /*
     |--------------------------------------------------------------------------
     | Admin Panel Classes
@@ -112,7 +118,7 @@ return [
     | For more detailed instructions you can look here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/#722-admin-panel-classes
     |
-     */
+    */
 
     'classes_body' => '',
     'classes_brand' => '',
@@ -120,7 +126,7 @@ return [
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-light-primary elevation-4',
+    'classes_sidebar' => 'sidebar-dark-primary elevation-4',
     'classes_sidebar_nav' => '',
     'classes_topnav' => 'navbar-white navbar-light',
     'classes_topnav_nav' => 'navbar-expand',
@@ -136,7 +142,7 @@ return [
     | For more detailed instructions you can look here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/#73-sidebar
     |
-     */
+    */
 
     'sidebar_mini' => true,
     'sidebar_collapse' => false,
@@ -158,7 +164,7 @@ return [
     | For more detailed instructions you can look here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/#74-control-sidebar-right-sidebar
     |
-     */
+    */
 
     'right_sidebar' => false,
     'right_sidebar_icon' => 'fas fa-cogs',
@@ -178,7 +184,7 @@ return [
     | For more detailed instructions you can look here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/#65-urls
     |
-     */
+    */
 
     'use_route_url' => false,
 
@@ -206,7 +212,7 @@ return [
     | For more detailed instructions you can look here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/#92-laravel-mix
     |
-     */
+    */
 
     'enabled_laravel_mix' => false,
     'laravel_mix_css_path' => 'css/app.css',
@@ -222,97 +228,91 @@ return [
     | For more detailed instructions you can look here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/#8-menu-configuration
     |
-     */
+    */
 
     'menu' => [
         [
             'text' => 'search',
-            'search' => false,
+            'search' => true,
             'topnav' => true,
         ],
-        ['header' => 'Cadastros'],
         [
-            'text' => 'Clientes',
+            'text' => 'blog',
+            'url'  => 'admin/blog',
+            'can'  => 'manage-blog',
+        ],
+        [
+            'text'        => 'pages',
+            'url'         => 'admin/pages',
+            'icon'        => 'far fa-fw fa-file',
+            'label'       => 4,
+            'label_color' => 'success',
+        ],
+        ['header' => 'account_settings'],
+        [
+            'text' => 'profile',
+            'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-user',
+        ],
+        [
+            'text' => 'change_password',
+            'url'  => 'admin/settings',
+            'icon' => 'fas fa-fw fa-lock',
+        ],
+        [
+            'text'    => 'multilevel',
+            'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
                 [
-                    'text' => 'Cadastrar cliente',
-                    'url' => '/admin/clientes',
+                    'text' => 'level_one',
+                    'url'  => '#',
                 ],
                 [
-                    'text' => 'Clientes Adimplentes',
-                    'url' => '/admin/clientes/adiplente/index',
+                    'text'    => 'level_one',
+                    'url'     => '#',
+                    'submenu' => [
+                        [
+                            'text' => 'level_two',
+                            'url'  => '#',
+                        ],
+                        [
+                            'text'    => 'level_two',
+                            'url'     => '#',
+                            'submenu' => [
+                                [
+                                    'text' => 'level_three',
+                                    'url'  => '#',
+                                ],
+                                [
+                                    'text' => 'level_three',
+                                    'url'  => '#',
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
                 [
-                    'text' => 'Clientes Inadimplentes',
-                    'url' => '/admin/clientes/inadimplentes/index',
+                    'text' => 'level_one',
+                    'url'  => '#',
                 ],
             ],
         ],
+        ['header' => 'labels'],
         [
-            'text' => 'Lojas',
-            'url' => 'admin/lojas',
-            'icon' => 'fas fa-store',
+            'text'       => 'important',
+            'icon_color' => 'red',
+            'url'        => '#',
         ],
         [
-            'text' => 'Usuários',
-            'url' => 'admin/usuarios',
-            'icon' => 'fas fa-users',
+            'text'       => 'warning',
+            'icon_color' => 'yellow',
+            'url'        => '#',
         ],
-        // [
-        //     'text' => 'multilevel',
-        //     'icon' => 'fas fa-fw fa-share',
-        //     'submenu' => [
-        //         [
-        //             'text' => 'level_one',
-        //             'url' => '#',
-        //         ],
-        //         [
-        //             'text' => 'level_one',
-        //             'url' => '#',
-        //             'submenu' => [
-        //                 [
-        //                     'text' => 'level_two',
-        //                     'url' => '#',
-        //                 ],
-        //                 [
-        //                     'text' => 'level_two',
-        //                     'url' => '#',
-        //                     'submenu' => [
-        //                         [
-        //                             'text' => 'level_three',
-        //                             'url' => '#',
-        //                         ],
-        //                         [
-        //                             'text' => 'level_three',
-        //                             'url' => '#',
-        //                         ],
-        //                     ],
-        //                 ],
-        //             ],
-        //         ],
-        //         [
-        //             'text' => 'level_one',
-        //             'url' => '#',
-        //         ],
-        //     ],
-        // ],
-        // ['header' => 'labels'],
-        // [
-        //     'text' => 'important',
-        //     'icon_color' => 'red',
-        //     'url' => '#',
-        // ],
-        // [
-        //     'text' => 'warning',
-        //     'icon_color' => 'yellow',
-        //     'url' => '#',
-        // ],
-        // [
-        //     'text' => 'information',
-        //     'icon_color' => 'cyan',
-        //     'url' => '#',
-        // ],
+        [
+            'text'       => 'information',
+            'icon_color' => 'cyan',
+            'url'        => '#',
+        ],
     ],
 
     /*
@@ -325,7 +325,7 @@ return [
     | For more detailed instructions you can look here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/#83-custom-menu-filters
     |
-     */
+    */
 
     'filters' => [
         JeroenNoten\LaravelAdminLte\Menu\Filters\GateFilter::class,
@@ -347,7 +347,7 @@ return [
     | For more detailed instructions you can look here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/#91-plugins
     |
-     */
+    */
 
     'plugins' => [
         'Datatables' => [
@@ -431,7 +431,7 @@ return [
     |
     | For more detailed instructions you can look here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/#93-livewire
-     */
+    */
 
     'livewire' => false,
 ];
