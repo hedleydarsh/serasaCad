@@ -3,18 +3,32 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cliente;
 use Illuminate\Http\Request;
+use App\Models\Loja;
+use App\Models\Inadimplencia;
 
 class ClienteController extends Controller
 {
+    protected $cliente;
+    protected $loja;
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct(Cliente $cliente, Loja $loja)
+    {
+        $this->loja = $loja;
+        $this->cliente = $cliente;
+    }
+
     public function index()
     {
-        return view('admin.clientes.index');
+        $cliente = $this->cliente->paginate(20);
+        return view('admin.clientes.index', compact('cliente'));
     }
 
     /**
@@ -24,7 +38,8 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        return view('admin.clientes.create');
+        $lojas = $this->loja->all();
+        return view('admin.clientes.create', compact('lojas'));
     }
 
     /**
@@ -35,7 +50,18 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        if (isset($request->inadimplente)) {
+            $cliente = $this->cliente->create($data);
+            $data['user_id'] = auth()->user()->id;
+            $cliente->inadimplencias()->create($data);
+            return redirect('admin/clientes');
+
+        } else {
+            $this->cliente->create($data);
+            return redirect('admin/clientes');
+        }
     }
 
     /**
@@ -57,7 +83,8 @@ class ClienteController extends Controller
      */
     public function edit($id)
     {
-        //
+        $cliente = $this->cliente->find($id);
+        return view('admin.clientes.edit', compact('cliente'));
     }
 
     /**
@@ -69,7 +96,12 @@ class ClienteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $cliente = $this->cliente->find($id);
+
+        $cliente->update($data);
+
+        return redirect('admin/clientes');
     }
 
     /**
@@ -80,6 +112,10 @@ class ClienteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $cliente = $this->cliente->find($id);
+        $cliente->delete();
+
+        return redirect('admin/clientes');
+
     }
 }

@@ -44,4 +44,8 @@ class User extends Authenticatable
     public function lojas(){
         return $this->hasMany(Loja::class);
     }
+
+    public function inadimplencias(){
+        return $this->hasMany(Inadimplencia::class);
+    }
 }

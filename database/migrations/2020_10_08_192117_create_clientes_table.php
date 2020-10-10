@@ -21,7 +21,7 @@ class CreateClientesTable extends Migration
             $table->string('endereco')->nullable();
             $table->string('descricao')->nullable();
             $table->string('cpf')->unique();
-            $table->string('status')->default('adimplente');
+            $table->string('status')->default(0);
             $table->timestamps();
         });
     }

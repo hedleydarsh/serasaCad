@@ -26,33 +26,52 @@
                 </div>
             </div>
             <div class="card-body">
-                <table id="Mytable" class="table table-striped dataTable collapsed">
+                <table id="myTable" style="width: 100%" class="table table-striped dataTable collapsed">
                     <thead>
                         <tr role="row">
                             <th>#</th>
                             <th>Nome</th>
                             <th>CPF</th>
+                            <th>Email</th>
+                            <th>Telefone</th>
+                            <th>Staus</th>
                             <th>AÇÕES</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr role="row" class="odd">
-                            <td>1</td>
-                            <td>Hedley Lima</td>
-                            <td>092.940.876-25</td>
-                            <td>
-                                <div class="btn-group">
-                                    <a href="#" class="btn btn-warning">Editar</a>
-                                    <a href="#" class="btn btn-danger ml-1">Excluir</a>
-                                </div>
-                            </td>
-                        </tr>
+                        @isset($cliente)
+                            @foreach ($cliente as $c)
+                                <tr role="row" class="odd">
+                                    <td>{{ $c->id }}</td>
+                                    <td>{{ $c->nome }}</td>
+                                    <td>{{ $c->cpf }}</td>
+                                    <td>{{ $c->email }}</td>
+                                    <td>{{ $c->telefone }}</td>
+                                    <td>{{ $c->status }}</td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <a href="{{ route('admin.clientes.edit', $c->id) }}"
+                                                class="btn btn-warning">Editar</a>
+                                            <form action="{{ route('admin.clientes.destroy', $c->id) }}" method="post"
+                                                class="ml-1">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-danger" type="submit">Deletar</button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @endisset
                     </tbody>
                     <tfoot>
                         <tr>
                             <th>#</th>
                             <th>Nome</th>
                             <th>CPF</th>
+                            <th>Email</th>
+                            <th>Telefone</th>
+                            <th>Staus</th>
                             <th>AÇÕES</th>
                         </tr>
                     </tfoot>
@@ -68,6 +87,47 @@
 
 @section('js')
     <script>
-        $('#cadastro-cliente').on('shown.bs.modal', function() {})
+        $('#cadastro-cliente').on('shown.bs.modal', function() {});
+        $(document).ready(function($) {
+            $('#telefone').mask("(99) 99999 - 9999", {
+                placeholder: "(99) 99999 - 9999"
+            });
+            $('#cpf').mask("999.999.999-99", {
+                placeholder: "999.999.999-99"
+            });
+        });
+
+        $(document).ready(function() {
+            $('.dataTable').DataTable({
+                responsive: true,
+                "autoWidth": true,
+                "pageLength": 50,
+                "language": {
+                    "sEmptyTable": "Não foi encontrado nenhum registo",
+                    "sLoadingRecords": "A carregar...",
+                    "sProcessing": "A processar...",
+                    "sLengthMenu": "Exibir _MENU_ registos",
+                    "sZeroRecords": "Não foram encontrados resultados",
+                    "sInfo": "Exibindo de _START_ até _END_ de _TOTAL_ registos",
+                    "sInfoEmpty": "Exibindo de 0 até 0 de 0 registos",
+                    "sInfoFiltered": "(filtrado de _MAX_ registos no total)",
+                    "sInfoPostFix": "",
+                    "sSearch": "Procurar:",
+                    "sUrl": "",
+                    "oPaginate": {
+                        "sFirst": "Primeiro",
+                        "sPrevious": "Anterior",
+                        "sNext": "Próximo",
+                        "sLast": "Último"
+                    },
+                    "oAria": {
+
+                        "sSortAscending": ": Ordenar colunas de forma ascendente",
+                        "sSortDescending": ": Ordenar colunas de forma descendente"
+                    }
+                }
+            });
+        });
+
     </script>
 @stop

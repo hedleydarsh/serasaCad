@@ -15,4 +15,8 @@ class Loja extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function inadimplencias(){
+        return $this->hasMany(Inadimplencia::class);
+    }
 }
