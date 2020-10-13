@@ -13,9 +13,9 @@ trait UploadTrait
     {
         $uploadedImages = [];
 
-        if (is_array($imageCollum)) {
+        if (is_array($image)) {
             foreach ($image as $img) {
-                $uploadedImages[] = [$imageCollum => $img->store('products', 'public')];
+                $uploadedImages[] = [$imageCollum => $img->store($imageCollum, 'public')];
             }
         } else {
             $uploadedImages = $image->store($imageCollum, 'public');

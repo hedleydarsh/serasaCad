@@ -18,10 +18,10 @@
                         </h3>
                     </div>
                     <div class="col-md-6 col-sm-12">
-                        <button class="btn btn-success float-right" data-toggle="modal" data-target="#cadastro-loja">
+                        <a href="{{ route('admin.lojas.create') }}" class="btn btn-success float-right" >
                             <i class="fas fa-plus"></i>
                             Novo
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -67,6 +67,7 @@
                         </tr>
                     </tfoot>
                 </table>
+                {{ $loja->links() }}
             </div>
         </div>
     </div>
@@ -82,7 +83,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('admin.lojas.store') }}" method="post">
+                    <form action="{{ route('admin.lojas.create') }}" method="post">
                         @csrf
                         <div class="form-group">
                             <label class="col-form-label" for="nome">
@@ -151,7 +152,37 @@
 
 @section('js')
     <script>
-        $('#cadastro-loja').on('shown.bs.modal', function() {})
+        $('#cadastro-loja').on('shown.bs.modal', function() {});
+        $(document).ready(function() {
+            $('.dataTable').DataTable({
+                responsive: true,
+                "autoWidth": true,
+                "language": {
+                    "sEmptyTable": "Não foi encontrado nenhum registo",
+                    "sLoadingRecords": "A carregar...",
+                    "sProcessing": "A processar...",
+                    "sLengthMenu": "Exibir _MENU_ registos",
+                    "sZeroRecords": "Não foram encontrados resultados",
+                    "sInfo": "Exibindo de _START_ até _END_ de _TOTAL_ registos",
+                    "sInfoEmpty": "Exibindo de 0 até 0 de 0 registos",
+                    "sInfoFiltered": "(filtrado de _MAX_ registos no total)",
+                    "sInfoPostFix": "",
+                    "sSearch": "Procurar:",
+                    "sUrl": "",
+                    "oPaginate": {
+                        "sFirst": "Primeiro",
+                        "sPrevious": "Anterior",
+                        "sNext": "Próximo",
+                        "sLast": "Último"
+                    },
+                    "oAria": {
+
+                        "sSortAscending": ": Ordenar colunas de forma ascendente",
+                        "sSortDescending": ": Ordenar colunas de forma descendente"
+                    }
+                }
+            });
+        });
 
     </script>
 @stop

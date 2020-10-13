@@ -21,6 +21,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function () {
         Route::resource('clientes', 'ClienteController');
         Route::resource('lojas', 'LojaController');
+        Route::resource('inadimplencia', 'InadimplenciaController');
+        Route::delete('inadimplenciaAnexoDestroy/{id}', 'InadimplenciaAnexoController@destroy')->name('inadimplenciaAnexoDestroy');
+        Route::get('adimplentes', 'ClienteController@adimplente');
+        Route::get('inadimplentes', 'ClienteController@inadimplente');
+        Route::resource('usuarios', 'UserController');
     });
 });
 

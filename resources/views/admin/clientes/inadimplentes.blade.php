@@ -7,14 +7,13 @@
 @stop
 
 @section('content')
-
     <div class="container-fluid">
         <div class="card card-default">
             <div class="card-header">
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
                         <h3 class="card-title">
-                            Clientes
+                            Clientes Adimplentes
                         </h3>
                     </div>
                     <div class="col-md-6 col-sm-12">
@@ -56,22 +55,21 @@
                                     </td>
                                     <td>
                                         <div class="btn-group">
+                                            <a href="{{ route('admin.clientes.show', $c->id) }}" class="btn btn-info">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
                                             <a href="{{ route('admin.clientes.edit', $c->id) }}"
                                                 class="btn btn-warning">
                                                 <i class="fas fa-edit"></i>
                                             </a>
-                                            <form action="{{ route('admin.clientes.destroy', $c->id) }}" method="post"
+                                            <form action="{{ route('admin.inadimplencia.destroy', $c->inadimplencias[0]->id) }}" method="post"
                                                 class="ml-1 mr-1">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="btn btn-danger" type="submit">
-                                                    <i class="fas fa-trash"></i>
+                                                    Remover a inadimplência
                                                 </button>
                                             </form>
-
-                                            <a href="{{ route('admin.clientes.show', $c->id) }}" class="btn btn-info">
-                                                <i class="fas fa-eye"></i>
-                                            </a>
                                         </div>
                                     </td>
                                 </tr>
@@ -90,7 +88,6 @@
                         </tr>
                     </tfoot>
                 </table>
-                {{ $cliente->links() }}
             </div>
         </div>
     </div>

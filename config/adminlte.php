@@ -241,11 +241,11 @@ return [
                 ],
                 [
                     'text' => 'Clientes Adimplentes',
-                    'url' => '/admin/clientes/adiplente/index',
+                    'url' => 'admin/adimplentes',
                 ],
                 [
                     'text' => 'Clientes Inadimplentes',
-                    'url' => '/admin/clientes/inadimplentes/index',
+                    'url' => 'admin/inadimplentes',
                 ],
             ],
         ],

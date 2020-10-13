@@ -145,6 +145,11 @@
                                     <input type="date" name="dt_vencimento" id="dt_vencimento" class="form-control"
                                         value="{{ old('dt_vencimento') }}" placeholder="Digite o dt_vencimento" />
                                 </div>
+                                <div class="form-group">
+                                    <label for="anexo">Anexos</label>
+                                    <input type="file" name="anexo[]" class="form-control @error('anexo.*') is-invalid @enderror"  multiple/>
+                                    @error('anexo.*') <div class="invalid-feedback">{{ $message }}</div>@enderror
+                                </div>
                             </div>
                         </div>
                     </div>

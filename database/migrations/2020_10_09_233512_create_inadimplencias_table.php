@@ -20,8 +20,8 @@ class CreateInadimplenciasTable extends Migration
             $table->foreignId('user_id')->constrained('users');
             $table->string('num_doc')->nullable();
             $table->string('cod_venda')->nullable();
-            $table->date('dt_compra');
-            $table->date('dt_vencimento');
+            $table->date('dt_compra')->nullable();
+            $table->date('dt_vencimento')->nullable();
             $table->softDeletes('deleted_at', 0);
             $table->timestamps();
         });

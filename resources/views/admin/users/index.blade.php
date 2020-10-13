@@ -3,7 +3,7 @@
 @section('title', 'Cadastro Serasa')
 
 @section('content_header')
-    <h1>Cadastro de Clientes</h1>
+    <h1>Cadastro de usuários</h1>
 @stop
 
 @section('content')
@@ -14,11 +14,11 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
                         <h3 class="card-title">
-                            Clientes
+                            Usuários
                         </h3>
                     </div>
                     <div class="col-md-6 col-sm-12">
-                        <a href="{{ route('admin.clientes.create') }}" class="btn btn-success float-right">
+                        <a href="{{ route('admin.usuarios.create') }}" class="btn btn-success float-right">
                             <i class="fas fa-plus"></i>
                             Novo
                         </a>
@@ -31,36 +31,26 @@
                         <tr role="row">
                             <th>#</th>
                             <th>Nome</th>
-                            <th>CPF</th>
                             <th>Email</th>
-                            <th>Telefone</th>
                             <th>Staus</th>
                             <th>AÇÕES</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @isset($cliente)
-                            @foreach ($cliente as $c)
+                        @isset($user)
+                            @foreach ($user as $u)
                                 <tr role="row" class="odd">
-                                    <td>{{ $c->id }}</td>
-                                    <td>{{ $c->nome }}</td>
-                                    <td>{{ $c->cpf }}</td>
-                                    <td>{{ $c->email }}</td>
-                                    <td>{{ $c->telefone }}</td>
-                                    <td>
-                                        @if (count($c->inadimplencias))
-                                            Inadimplente
-                                        @else
-                                            Adimplente
-                                        @endif
-                                    </td>
+                                    <td>{{ $u->id }}</td>
+                                    <td>{{ $u->name }}</td>
+                                    <td>{{ $u->email }}</td>
+                                    <td>{{ $u->status }}</td>
                                     <td>
                                         <div class="btn-group">
-                                            <a href="{{ route('admin.clientes.edit', $c->id) }}"
+                                            <a href="{{ route('admin.usuarios.edit', $u->id) }}"
                                                 class="btn btn-warning">
                                                 <i class="fas fa-edit"></i>
                                             </a>
-                                            <form action="{{ route('admin.clientes.destroy', $c->id) }}" method="post"
+                                            <form action="{{ route('admin.usuarios.destroy', $u->id) }}" method="post"
                                                 class="ml-1 mr-1">
                                                 @csrf
                                                 @method('DELETE')
@@ -68,10 +58,6 @@
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                             </form>
-
-                                            <a href="{{ route('admin.clientes.show', $c->id) }}" class="btn btn-info">
-                                                <i class="fas fa-eye"></i>
-                                            </a>
                                         </div>
                                     </td>
                                 </tr>
@@ -82,15 +68,13 @@
                         <tr>
                             <th>#</th>
                             <th>Nome</th>
-                            <th>CPF</th>
                             <th>Email</th>
-                            <th>Telefone</th>
                             <th>Staus</th>
                             <th>AÇÕES</th>
                         </tr>
                     </tfoot>
                 </table>
-                {{ $cliente->links() }}
+                {{ $user->links() }}
             </div>
         </div>
     </div>
@@ -101,18 +85,8 @@
 @stop
 
 @section('js')
-    <script>
-        $('#cadastro-cliente').on('shown.bs.modal', function() {});
-        $(document).ready(function($) {
-            $('#telefone').mask("(99) 99999 - 9999", {
-                placeholder: "(99) 99999 - 9999"
-            });
-            $('#cpf').mask("999.999.999-99", {
-                placeholder: "999.999.999-99"
-            });
-        });
-
-        $(document).ready(function() {
+<script>
+           $(document).ready(function() {
             $('.dataTable').DataTable({
                 responsive: true,
                 "autoWidth": true,
@@ -142,6 +116,5 @@
                 }
             });
         });
-
-    </script>
+</script>
 @stop

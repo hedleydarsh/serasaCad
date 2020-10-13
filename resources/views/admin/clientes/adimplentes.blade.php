@@ -7,14 +7,13 @@
 @stop
 
 @section('content')
-
     <div class="container-fluid">
         <div class="card card-default">
             <div class="card-header">
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
                         <h3 class="card-title">
-                            Clientes
+                            Clientes Adimplentes
                         </h3>
                     </div>
                     <div class="col-md-6 col-sm-12">
@@ -56,9 +55,8 @@
                                     </td>
                                     <td>
                                         <div class="btn-group">
-                                            <a href="{{ route('admin.clientes.edit', $c->id) }}"
-                                                class="btn btn-warning">
-                                                <i class="fas fa-edit"></i>
+                                            <a href="{{ route('admin.clientes.show', $c->id) }}" class="btn btn-info">
+                                                <i class="fas fa-eye"></i>
                                             </a>
                                             <form action="{{ route('admin.clientes.destroy', $c->id) }}" method="post"
                                                 class="ml-1 mr-1">
@@ -68,9 +66,9 @@
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                             </form>
-
-                                            <a href="{{ route('admin.clientes.show', $c->id) }}" class="btn btn-info">
-                                                <i class="fas fa-eye"></i>
+                                            <a href="{{ route('admin.inadimplencia.show', $c->id) }}"
+                                                class="btn btn-success">
+                                                <i class="fas fa-plus"></i>
                                             </a>
                                         </div>
                                     </td>
@@ -90,7 +88,6 @@
                         </tr>
                     </tfoot>
                 </table>
-                {{ $cliente->links() }}
             </div>
         </div>
     </div>

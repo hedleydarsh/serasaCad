@@ -16,7 +16,7 @@ class CreateInadimplenciaAnexosTable extends Migration
         Schema::create('inadimplencia_anexos', function (Blueprint $table) {
             $table->id();
             $table->foreignId('inadimplencia_id')->constrained('inadimplencias');
-            $table->string('anexo');
+            $table->string('anexo')->nullable();
             $table->timestamps();
         });
     }

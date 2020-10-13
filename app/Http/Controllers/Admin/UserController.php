@@ -4,15 +4,15 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Loja;
-use App\Http\Requests\LojaRequest;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
-class LojaController extends Controller
+class UserController extends Controller
 {
-    private $loja;
-    public function __construct(Loja $loja)
+    private $user;
+    public function __construct(User $user)
     {   
-        $this->loja = $loja;
+        $this->user = $user;
     }
 
     /**
@@ -22,8 +22,8 @@ class LojaController extends Controller
      */
     public function index()
     {
-        $loja = $this->loja->paginate(20);
-        return view('admin.lojas.index', compact('loja'));
+        $user = $this->user->paginate(20);
+        return view('admin.users.index', compact('user'));
     }
 
     /**
@@ -33,7 +33,7 @@ class LojaController extends Controller
      */
     public function create()
     {
-        return view('admin.lojas.create');
+        return view('admin.users.create');
     }
 
     /**
@@ -42,16 +42,12 @@ class LojaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(LojaRequest $request)
+    public function store(Request $request)
     {
-        $user = auth()->user();
         $data = $request->all();
-
-        // dd($data);
-        
-        $user->lojas()->create($data);
-        
-        return redirect('admin/lojas');
+        $data['password'] = Hash::make($data['password']); 
+        $user = $this->user->create($data);
+        return redirect('admin/usuarios');
     }
 
     /**
@@ -72,9 +68,8 @@ class LojaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {   
-        $loja = $this->loja->find($id);
-        return view('admin.lojas.edit', compact('loja'));
+    {
+        //
     }
 
     /**
@@ -84,14 +79,9 @@ class LojaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(LojaRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $loja = $this->loja->find($id);
-        $data = $request->all();
-
-        $loja->update($data);
-
-        return redirect('admin/lojas');
+        //
     }
 
     /**
@@ -102,9 +92,9 @@ class LojaController extends Controller
      */
     public function destroy($id)
     {
-        $loja = $this->loja->find($id);
-        $loja->delete();
+        $user = $this->user->find($id);
+        $user->delete();
 
-        return redirect('admin/lojas');
+        return redirect('admin/usuarios');
     }
 }
