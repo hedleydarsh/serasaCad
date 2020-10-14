@@ -14,7 +14,7 @@ class AlterCollunLojasDescricao extends Migration
     public function up()
     {
         Schema::table('lojas', function (Blueprint $table) {
-            $table->dropColumn('descricao');
+            $table->longText('descricao')->change();
         });
     }
 
@@ -25,6 +25,8 @@ class AlterCollunLojasDescricao extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('lojas', function (Blueprint $table) {
+            $table->dropColumn('descricao');
+        });
     }
 }
