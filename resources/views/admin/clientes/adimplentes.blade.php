@@ -33,7 +33,7 @@
                             <th>CPF</th>
                             <th>Email</th>
                             <th>Telefone</th>
-                            <th>Staus</th>
+                            <th>Status</th>
                             <th>AÇÕES</th>
                         </tr>
                     </thead>
@@ -83,7 +83,7 @@
                             <th>CPF</th>
                             <th>Email</th>
                             <th>Telefone</th>
-                            <th>Staus</th>
+                            <th>Status</th>
                             <th>AÇÕES</th>
                         </tr>
                     </tfoot>

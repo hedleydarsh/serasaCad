@@ -12,7 +12,7 @@ class Inadimplencia extends Model
     use HasFactory;
 
     protected $fillable = ['loja_id', 'user_id', 'cliente_id', 
-    'num_doc', 'cod_venda', 'dt_compra', 'dt_vencimento'];
+    'num_doc', 'cod_venda', 'dt_compra', 'dt_vencimento', 'valor'];
 
     public function user(){
         return $this->belongsTo(User::class);

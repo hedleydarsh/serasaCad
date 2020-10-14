@@ -113,7 +113,8 @@ class InadimplenciaController extends Controller
 
         $inadimplencia->update($data);
 
-        return redirect('admin/clientes/show');
+
+        return redirect('admin/clientes/'.$inadimplencia['cliente_id']);
     }
 
     /**

@@ -33,7 +33,8 @@
                             <th>CPF</th>
                             <th>Email</th>
                             <th>Telefone</th>
-                            <th>Staus</th>
+                            <th>Status</th>
+                            <th>Valor</th>
                             <th>AÇÕES</th>
                         </tr>
                     </thead>
@@ -53,6 +54,7 @@
                                             Adimplente
                                         @endif
                                     </td>
+                                    <td>R$ {{ number_format(floatval($c->inadimplencias[0]->valor), '2', '.', ',') }}</td>
                                     <td>
                                         <div class="btn-group">
                                             <a href="{{ route('admin.clientes.show', $c->id) }}" class="btn btn-info">
@@ -83,7 +85,8 @@
                             <th>CPF</th>
                             <th>Email</th>
                             <th>Telefone</th>
-                            <th>Staus</th>
+                            <th>Status</th>
+                            <th>Valor</th>
                             <th>AÇÕES</th>
                         </tr>
                     </tfoot>

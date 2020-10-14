@@ -59,6 +59,11 @@
                                 value="{{ $inadimplencia->dt_vencimento }}" placeholder="Digite o dt_vencimento" />
                         </div>
                         <div class="form-group col-md-6">
+                            <label for="valor" class="col-form-label">Valor</label>
+                            <input type="number" name="valor" id="valor" class="form-control"
+                                value="{{ $inadimplencia->valor }}" placeholder="Digite o valor" />
+                        </div>
+                        <div class="form-group col-md-6">
                             <label for="anexo">Anexos</label>
                             <input type="file" name="anexo[]" class="form-control @error('anexo.*') is-invalid @enderror"
                                 multiple />

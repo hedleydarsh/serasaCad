@@ -56,6 +56,21 @@
             <!-- small box -->
             <div class="small-box bg-warning">
                 <div class="inner">
+                    <h3>@isset($valorInadimplente)R$ {{ number_format(floatval($valorInadimplente)) }}@endisset</h3>
+                    <p>Valor total de inadimplências</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-pie-graph"></i>
+                </div>
+                <a href="/admin/inadimplentes" class="small-box-footer">Detalhes <i
+                        class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        {{-- <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+                <div class="inner">
                     <h3>-</h3>
                     <p>Dívidas quitadas</p>
                 </div>
@@ -64,7 +79,7 @@
                 </div>
                 <a href="#" class="small-box-footer">Detalhes<i class="fas fa-arrow-circle-right"></i></a>
             </div>
-        </div>
+        </div> --}}
     </div>
 
     <div class="container-fluid">
@@ -93,7 +108,7 @@
                             <th>CPF</th>
                             <th>Email</th>
                             <th>Telefone</th>
-                            <th>Staus</th>
+                            <th>Status</th>
                             <th>AÇÕES</th>
                         </tr>
                     </thead>
@@ -143,7 +158,7 @@
                             <th>CPF</th>
                             <th>Email</th>
                             <th>Telefone</th>
-                            <th>Staus</th>
+                            <th>Status</th>
                             <th>AÇÕES</th>
                         </tr>
                     </tfoot>

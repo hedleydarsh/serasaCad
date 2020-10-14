@@ -122,6 +122,13 @@
                                         <div class="">{{ $i->dt_vencimento }}</div>
                                     </div>
                                 </div>
+                                <div class="col-md-4">
+                                    <!-- text input -->
+                                    <div class="form-group">
+                                        <label>Valor</label>
+                                        <div class="">R$ {{ number_format(floatval($i->valor), 2, '.', ',') }}</div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="form-group">

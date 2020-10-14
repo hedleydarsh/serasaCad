@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cliente;
+use App\Models\Inadimplencia;
 
 class HomeController extends Controller
 {
@@ -28,7 +29,9 @@ class HomeController extends Controller
         $adimplente = $this->adimplente()->count();
         $inadimplente = $this->inadimplente()->count();
 
-        return view('home', compact('cliente', 'adimplente', 'inadimplente'));
+        $valorInadimplente = Inadimplencia::all()->sum('valor');
+
+        return view('home', compact('cliente', 'adimplente', 'inadimplente', 'valorInadimplente'));
     }
 
     private function adimplente(){
