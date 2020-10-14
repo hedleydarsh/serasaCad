@@ -60,7 +60,7 @@
                                             <a href="{{ route('admin.clientes.show', $c->id) }}" class="btn btn-info">
                                                 <i class="fas fa-eye"></i>
                                             </a>
-                                            <a href="{{ route('admin.clientes.edit', $c->id) }}"
+                                            <a href="{{ route('admin.inadimplencia.edit', $c->inadimplencias[0]->id) }}"
                                                 class="btn btn-warning">
                                                 <i class="fas fa-edit"></i>
                                             </a>

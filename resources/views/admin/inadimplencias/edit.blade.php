@@ -12,7 +12,7 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-sm-12">
-                        <a href="{{ route('admin.inadimplencia.index') }}" class="btn btn-primary">
+                        <a href="{{ route('admin.inadimplentes') }}" class="btn btn-primary">
                             <i class="fas fa-undo"></i>
                             Voltar
                         </a>

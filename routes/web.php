@@ -24,8 +24,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('lojas', 'LojaController');
         Route::resource('inadimplencia', 'InadimplenciaController');
         Route::delete('inadimplenciaAnexoDestroy/{id}', 'InadimplenciaAnexoController@destroy')->name('inadimplenciaAnexoDestroy');
-        Route::get('adimplentes', 'ClienteController@adimplente')->name('admimplentes');
-        Route::get('inadimplentes', 'ClienteController@inadimplente')->name('inadmimplentes');
+        Route::get('adimplentes', 'ClienteController@adimplente')->name('adimplentes');
+        Route::get('inadimplentes', 'ClienteController@inadimplente')->name('inadimplentes');
         Route::resource('usuarios', 'UserController');
     });
 });
