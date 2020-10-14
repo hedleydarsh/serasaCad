@@ -152,6 +152,15 @@
 
 @section('js')
     <script>
+        $(document).ready(function($) {
+            $('#telefone').mask("(99) 99999 - 9999", {
+                placeholder: "(99) 99999 - 9999"
+            });
+            $('#cpf').mask("999.999.999-99", {
+                placeholder: "999.999.999-99"
+            });
+        });
+
         $('#cadastro-loja').on('shown.bs.modal', function() {});
         $(document).ready(function() {
             $('.dataTable').DataTable({

@@ -26,7 +26,7 @@ class LojaRequest extends FormRequest
         return [
             'nome' => 'required | min:4',
             'descricao' => '',
-            'telefone' => 'required | numeric',
+            'telefone' => 'required',
             'slug'
         ];
     }
