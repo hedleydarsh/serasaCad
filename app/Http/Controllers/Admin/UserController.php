@@ -69,7 +69,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = $this->user->find($id);
+        return view('admin.users.edit', compact('user'));
     }
 
     /**
@@ -81,7 +82,12 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $user = $this->user->find($id);
+
+        $user->update($data);
+
+        return redirect('admin/usuarios');
     }
 
     /**

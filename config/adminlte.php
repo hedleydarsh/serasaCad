@@ -230,6 +230,11 @@ return [
             'search' => false,
             'topnav' => true,
         ],
+        [
+            'text' => 'Início',
+            'url' => '/home',
+            'icon' => 'fas fa-home'
+        ],
         ['header' => 'Cadastros'],
         [
             'text' => 'Clientes',

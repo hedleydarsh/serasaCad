@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Cliente;
 
 class HomeController extends Controller
 {
@@ -22,7 +23,31 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {
-        return view('home');
+    {   
+        $cliente = Cliente::all();
+        $adimplente = $this->adimplente()->count();
+        $inadimplente = $this->inadimplente()->count();
+
+        return view('home', compact('cliente', 'adimplente', 'inadimplente'));
+    }
+
+    private function adimplente(){
+        $cliente = Cliente::all();
+        $cliente = $cliente->filter(function ($item) {
+            return $item->inadimplencias->count() == 0;
+        });
+
+        return $cliente;
+       
+    }
+
+    private function inadimplente(){
+        $cliente = Cliente::all();
+        $cliente = $cliente->filter(function ($item) {
+            return $item->inadimplencias->count() > 0;
+        });
+
+        return $cliente;
+       
     }
 }

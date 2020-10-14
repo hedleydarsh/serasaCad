@@ -13,22 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::group(['middleware' => 'auth'], function () {
+    
+
+    Route::get('/', 'HomeController@index')->name('home');
+    Route::get('/home', 'HomeController@index')->name('home');
+
     Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function () {
         Route::resource('clientes', 'ClienteController');
         Route::resource('lojas', 'LojaController');
         Route::resource('inadimplencia', 'InadimplenciaController');
         Route::delete('inadimplenciaAnexoDestroy/{id}', 'InadimplenciaAnexoController@destroy')->name('inadimplenciaAnexoDestroy');
-        Route::get('adimplentes', 'ClienteController@adimplente');
-        Route::get('inadimplentes', 'ClienteController@inadimplente');
+        Route::get('adimplentes', 'ClienteController@adimplente')->name('admimplentes');
+        Route::get('inadimplentes', 'ClienteController@inadimplente')->name('inadmimplentes');
         Route::resource('usuarios', 'UserController');
     });
 });
 
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
