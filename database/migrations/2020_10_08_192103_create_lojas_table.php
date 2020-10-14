@@ -17,7 +17,7 @@ class CreateLojasTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->string('nome');
-            $table->string('descricao')->nullable();
+            $table->longText('descricao')->nullable();
             $table->string('slug');
             $table->string('telefone')->nullable();
             $table->timestamps();
