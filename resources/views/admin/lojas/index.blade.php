@@ -161,7 +161,7 @@
             });
         });
 
-        $('#cadastro-loja').on('shown.bs.modal', function() {});
+        // $('#cadastro-loja').on('shown.bs.modal', function() {});
         $(document).ready(function() {
             $('.dataTable').DataTable({
                 responsive: true,

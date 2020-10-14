@@ -54,7 +54,7 @@
                                             Adimplente
                                         @endif
                                     </td>
-                                    <td>R$ {{ number_format(floatval($c->inadimplencias[0]->valor), '2', '.', ',') }}</td>
+                                    <td>R$ {{ number_format(floatval($c->inadimplencias[0]->valor), '2', ',', '.') }}</td>
                                     <td>
                                         <div class="btn-group">
                                             <a href="{{ route('admin.clientes.show', $c->id) }}" class="btn btn-info">

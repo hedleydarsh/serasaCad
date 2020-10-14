@@ -33,7 +33,8 @@
                             @error('nome') <i class="far fa-times-circle"></i> @enderror
                             Nome
                         </label>
-                        <input type="text" required class="form-control @error('nome')is-invalid @enderror" id="nome" name="nome"/>
+                        <input type="text" required class="form-control @error('nome')is-invalid @enderror" id="nome"
+                            name="nome" />
                         @error('nome')
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -69,7 +70,7 @@
                             @error('slug') <i class="far fa-times-circle"></i> @enderror
                             slug
                         </label>
-                        <input type="text" class="form-control @error('slug')is-invalid @enderror" id="slug" name="slug"/>
+                        <input type="text" class="form-control @error('slug')is-invalid @enderror" id="slug" name="slug" />
                         @error('slug')
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -89,8 +90,17 @@
 @stop
 
 @section('js')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.js"
+        integrity="sha512-yVcJYuVlmaPrv3FRfBYGbXaurHsB2cGmyHr4Rf1cxAS+IOe/tCqxWY/EoBKLoDknY4oI1BNJ1lSU2dxxGo9WDw=="
+        crossorigin="anonymous">
+    </script>
+
     <script>
-        $('#cadastro-loja').on('shown.bs.modal', function() {})
+        $(document).ready(function($) {
+            $('#telefone').mask("(99) 99999 - 9999", {
+                placeholder: "(99) 99999 - 9999"
+            });ss
+        });
 
     </script>
 @stop

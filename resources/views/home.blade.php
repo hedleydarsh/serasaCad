@@ -56,7 +56,7 @@
             <!-- small box -->
             <div class="small-box bg-warning">
                 <div class="inner">
-                    <h3>@isset($valorInadimplente)R$ {{ number_format(floatval($valorInadimplente)) }}@endisset</h3>
+                    <h3>@isset($valorInadimplente)R$ {{ number_format(floatval($valorInadimplente),'2',',','.') }}@endisset</h3>
                     <p>Valor total de inadimplências</p>
                 </div>
                 <div class="icon">

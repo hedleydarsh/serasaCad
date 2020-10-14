@@ -96,9 +96,7 @@
                                 telefone
                             </label>
                             <input type="tel" class="form-control @error('telefone') is-invalid @enderror" id="telefone"
-                                name="telefone"
-                                data-inputmask="'mask': ['999-999-9999 [x99999]', '+099 99 99 9999[9]-9999']" data-mask=""
-                                placeholder="Digite o telefone do cliente" value="{{ old('telefone') }}">
+                                name="telefone" placeholder="Digite o telefone do cliente" value="{{ old('telefone') }}">
                             @error('telefone')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -145,9 +143,15 @@
                                     <input type="date" name="dt_vencimento" id="dt_vencimento" class="form-control"
                                         value="{{ old('dt_vencimento') }}" placeholder="Digite o dt_vencimento" />
                                 </div>
+                                <div class="form-group col-md-6">
+                                    <label for="valor" class="col-form-label">dt_vencimento</label>
+                                    <input type="number" name="valor" id="valor" class="form-control"
+                                        value="{{ old('valor') }}" placeholder="Digite o valor" />
+                                </div>
                                 <div class="form-group">
                                     <label for="anexo">Anexos</label>
-                                    <input type="file" name="anexo[]" class="form-control @error('anexo.*') is-invalid @enderror"  multiple/>
+                                    <input type="file" name="anexo[]"
+                                        class="form-control @error('anexo.*') is-invalid @enderror" multiple />
                                     @error('anexo.*') <div class="invalid-feedback">{{ $message }}</div>@enderror
                                 </div>
                             </div>

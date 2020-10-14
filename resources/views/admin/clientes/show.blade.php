@@ -126,7 +126,7 @@
                                     <!-- text input -->
                                     <div class="form-group">
                                         <label>Valor</label>
-                                        <div class="">R$ {{ number_format(floatval($i->valor), 2, '.', ',') }}</div>
+                                        <div class="">R$ {{ number_format(floatval($i->valor), 2, ',', '.') }}</div>
                                     </div>
                                 </div>
                             </div>
