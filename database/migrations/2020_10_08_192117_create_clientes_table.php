@@ -19,7 +19,7 @@ class CreateClientesTable extends Migration
             $table->string('email');
             $table->string('telefone')->nullable();
             $table->string('endereco')->nullable();
-            $table->string('descricao')->nullable();
+            $table->longText('descricao')->nullable();
             $table->string('cpf')->unique();
             $table->string('status')->default(0);
             $table->timestamps();

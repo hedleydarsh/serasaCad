@@ -25,9 +25,9 @@ class ClienteRequest extends FormRequest
     {
         return [
             'nome' => 'required | min:4',
-            'cpf'  => 'required',
+            'cpf'  => 'required | unique:clientes',
             'endereco',
-            'email',
+            'email' => 'required',
             'descricao',
             'telefone',
             'anexo.*' => 'mimes:jpeg,bmp,png,gif,svg,pdf',
@@ -39,6 +39,7 @@ class ClienteRequest extends FormRequest
             'required' => 'Este campo é obrigatório',
             'min' => 'Este campo deve conter no mínimo 4 caracteres',
             'numeric' => 'Este campo só pode conter números',
+            'unique' => 'Este cpf já está cadastrado'
         ];
     }
 }

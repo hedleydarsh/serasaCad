@@ -65,11 +65,12 @@ class ClienteController extends Controller
                 $inadimplencia->anexo()->createMany($anexos);
             }
 
-            return view('admin.clientes.show', compact('cliente'));
-
+            flash("Cliente criado com sucesso!")->success();
+            return redirect()->route('admin.clientes.show', $cliente->id);
         } else {
             $cliente = $this->cliente->create($data);
-            return view('admin.clientes.show', compact('cliente'));
+            flash("Cliente criado com sucesso!")->success();
+            return redirect()->route('admin.clientes.show', $cliente->id);
         }
     }
 
@@ -111,6 +112,7 @@ class ClienteController extends Controller
 
         $cliente->update($data);
 
+        flash("Cliente criado com sucesso!")->success();
         return redirect('admin/clientes');
     }
 
@@ -124,6 +126,7 @@ class ClienteController extends Controller
     {
         $cliente = $this->cliente->find($id);
         $cliente->delete();
+        flash("Cliente Excluido com sucesso!")->success();
         return redirect('admin/clientes');
     }
 

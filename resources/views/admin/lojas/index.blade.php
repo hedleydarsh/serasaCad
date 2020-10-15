@@ -26,6 +26,7 @@
                 </div>
             </div>
             <div class="card-body">
+                @include('flash::message')
                 <table id="Mytable" class="table table-striped dataTable collapsed">
                     <thead>
                         <tr role="row">

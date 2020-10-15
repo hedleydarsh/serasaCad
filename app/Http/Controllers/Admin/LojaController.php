@@ -50,7 +50,8 @@ class LojaController extends Controller
         // dd($data);
         
         $user->lojas()->create($data);
-        
+
+        flash("Loja criada com sucesso!")->success();
         return redirect('admin/lojas');
     }
 
@@ -91,6 +92,7 @@ class LojaController extends Controller
 
         $loja->update($data);
 
+        flash("Loja editada com sucesso!")->success();
         return redirect('admin/lojas');
     }
 
@@ -104,7 +106,7 @@ class LojaController extends Controller
     {
         $loja = $this->loja->find($id);
         $loja->delete();
-
+        flash("Loja Excluida com sucesso!")->success();
         return redirect('admin/lojas');
     }
 }

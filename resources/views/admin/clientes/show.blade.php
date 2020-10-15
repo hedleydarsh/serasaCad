@@ -7,7 +7,14 @@
 @stop
 
 @section('content')
-
+    <style>
+        @media print {
+            a,
+            .alert {
+                display: none;
+            }
+        }
+    </style>
     <div class="card card-default">
         <div class="card-header">
             <div class="row">
@@ -27,6 +34,7 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body">
+            @include('flash::message')
             @isset($cliente)
                 <div class="mb-3">
                     <h4 class="mb-3">Informações pessoais</h4>
@@ -190,12 +198,12 @@
                             </div>
                         </div>
                     </div>
-                    @else
-                        <a href="{{ route('admin.inadimplencia.show', $cliente->id) }}" class="btn btn-success">
-                            <i class="fas fa-plus"></i>
-                            Criar inadimplência
-                        </a>
-                    @endif
+                @else
+                    <a href="{{ route('admin.inadimplencia.show', $cliente->id) }}" class="btn btn-success">
+                        <i class="fas fa-plus"></i>
+                        Criar inadimplência
+                    </a>
+                @endif
             @endisset
         </div>
         <!-- /.card-body -->

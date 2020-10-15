@@ -56,6 +56,7 @@ class InadimplenciaController extends Controller
             $inadimplencia->anexo()->createMany($anexos);
         }
 
+        flash("Inadimplência com sucesso!")->success();
         return redirect('admin/clientes/'.$data['cliente_id']);
 
     }
@@ -113,7 +114,7 @@ class InadimplenciaController extends Controller
 
         $inadimplencia->update($data);
 
-
+        flash("Inadimplência editada com sucesso!")->success();
         return redirect('admin/clientes/'.$inadimplencia['cliente_id']);
     }
 
@@ -129,6 +130,7 @@ class InadimplenciaController extends Controller
         // dd($cliente->inadimplencias()->withTrashed()->get());
         $inadimplencia = $this->inadimplencia->find($id);
         $inadimplencia->delete();
+        flash("Inadimplência Excluido com sucesso!")->success();
         return redirect()->back();
     }
 }
